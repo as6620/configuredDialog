@@ -1,14 +1,18 @@
 package com.example.configureddialog;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -18,11 +22,12 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn1,btn2,btn3,btn4;
+    Button btn1, btn2, btn3, btn4;
     AlertDialog.Builder adb;
     View layout;
     String[] colors = {"Red", "Green", "Blue"};
     int[] color = new int[]{0, 0, 0};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         initViews();
     }
 
-    private void initViews(){
+    private void initViews() {
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Displays a single-choice alert dialog allowing the user to select a color.
      * Changes the background color based on the selection.
+     *
      * @param view The button that was clicked.
      */
     public void goBtn1(View view) {
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Displays a multi-choice alert dialog allowing the user to select multiple colors.
      * Changes the background color based on the selections.
+     *
      * @param view The button that was clicked.
      */
     public void goBtn2(View view) {
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-        adb.setMultiChoiceItems(colors,null, new DialogInterface.OnMultiChoiceClickListener() {
+        adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                 if (isChecked) color[which] = 255;
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Resets the background color of the layout to white.
+     *
      * @param view The button that was clicked.
      */
     public void goBtn3(View view) {
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Displays an alert dialog with an EditText field.
      * Shows a toast message with the user's input when "OK" is clicked.
+     *
      * @param view The button that was clicked.
      */
     public void goBtn4(View view) {
@@ -130,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         adb.setTitle("TITLE skibidi msg");
         adb.setMessage("hello kitty");
 
-        EditText eT = new EditText( this);
+        EditText eT = new EditText(this);
         eT.setHint("Edit Text!!!");
         adb.setView(eT);
 
@@ -152,4 +161,31 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = adb.create();
         alertDialog.show();
     }
+
+    /**
+     * Inflates the options menu for the activity.
+     *
+     * @param menu The options menu in which items are placed.
+     * @return True if the menu is to be displayed.
+     */
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+    /**
+     * Handles item selection from the options menu.
+     *
+     * @param item The menu item that was selected.
+     * @return True if the item was successfully handled.
+     */
+//    @Override
+//    public boolean onOptionsItemSelected(@Nullable MenuItem item) {
+////        int id = item.getItemId();
+////        if(id == R.id.credits) {
+////            Intent si = new Intent(this, Credits.class);
+////            startActivity(si);
+////        }
+////        return true;
+//    }
 }

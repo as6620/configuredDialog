@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-        adb.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -100,8 +102,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goBtn3(View view) {
+        layout.setBackgroundColor(Color.WHITE);
     }
 
     public void goBtn4(View view) {
+        adb = new AlertDialog.Builder(this);
+        adb.setTitle("TITLE skibidi msg");
+        adb.setMessage("hello kitty");
+
+        EditText eT = new EditText( this);
+        eT.setHint("Edit Text!!!");
+        adb.setView(eT);
+
+        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String str = eT.getText().toString();
+                dialog.cancel();
+                Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+            }
+        });
+        adb.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        adb.setCancelable(false);
+        AlertDialog alertDialog = adb.create();
+        alertDialog.show();
     }
 }

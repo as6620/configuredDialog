@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.btn4);
         layout = (android.widget.LinearLayout) findViewById(R.id.main);
     }
+
+    /**
+     * Displays a single-choice alert dialog allowing the user to select a color.
+     * Changes the background color based on the selection.
+     * @param view The button that was clicked.
+     */
     public void goBtn1(View view) {
         adb = new AlertDialog.Builder(this);
         adb.setTitle("Skibidi title");
@@ -63,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     * Displays a multi-choice alert dialog allowing the user to select multiple colors.
+     * Changes the background color based on the selections.
+     * @param view The button that was clicked.
+     */
     public void goBtn2(View view) {
         adb = new AlertDialog.Builder(this);
         adb.setTitle("TITLE");
@@ -101,10 +112,19 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     * Resets the background color of the layout to white.
+     * @param view The button that was clicked.
+     */
     public void goBtn3(View view) {
         layout.setBackgroundColor(Color.WHITE);
     }
 
+    /**
+     * Displays an alert dialog with an EditText field.
+     * Shows a toast message with the user's input when "OK" is clicked.
+     * @param view The button that was clicked.
+     */
     public void goBtn4(View view) {
         adb = new AlertDialog.Builder(this);
         adb.setTitle("TITLE skibidi msg");
